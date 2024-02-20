@@ -49,26 +49,11 @@ function createPerson(name: string, age: number, isActive: boolean): PersonInter
  */
 
 function LogMethodCalls(target: any, propertyName: string, propertyDescriptor: PropertyDescriptor): PropertyDescriptor {
-  const method = propertyDescriptor.value
-
-  propertyDescriptor.value = function (...args: any[]) {
-    console.log(`Calling "${propertyName}" with arguments: ${args.join(', ')}`)
-    return method.apply(this, args)
-  }
-
-  return propertyDescriptor
+  // code here
 }
 
 class Calculator {
-  @LogMethodCalls
-  add(a: number, b: number): number {
-    return a + b
-  }
-
-  @LogMethodCalls
-  multiply(a: number, b: number): number {
-    return a * b
-  }
+  // code here
 }
 
 // const calculator = new Calculator()
@@ -93,23 +78,7 @@ class Calculator {
  */
 
 namespace UserProfile {
-  export interface ProfileInterface {
-    id: string
-    name: string
-    email: string
-  }
-
-  export function createProfile(name: string, email: string): ProfileInterface {
-    return {
-      id: generateId(),
-      name: name,
-      email: email
-    }
-  }
-
-  function generateId(): string {
-    return Math.random().toString(36).substring(2, 15)
-  }
+  // code here
 }
 
 // const profile = UserProfile.createProfile('John Doe', 'john@example.com')
