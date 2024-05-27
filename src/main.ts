@@ -16,17 +16,11 @@ console.log('#20. TypeScript homework example file')
  */
 
 interface PersonInterface {
-  name: string
-  age: number
-  isActive: boolean
+  // code here
 }
 
 function createPerson(name: string, age: number, isActive: boolean): PersonInterface {
-  return {
-    name,
-    age,
-    isActive
-  }
+  // code here
 }
 
 // const newPerson = createPerson('Олександр', 31, false)
