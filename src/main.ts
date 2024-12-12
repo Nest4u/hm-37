@@ -16,11 +16,17 @@ console.log('#20. TypeScript homework example file')
  */
 
 interface PersonInterface {
-  // code here
+  name: string
+    age: number
+    isActive:boolean
 }
 
 function createPerson(name: string, age: number, isActive: boolean): PersonInterface {
-  // code here
+  return {
+    name,
+    age,
+    isActive,
+  };
 }
 
 // const newPerson = createPerson('Олександр', 31, false)
@@ -43,11 +49,28 @@ function createPerson(name: string, age: number, isActive: boolean): PersonInter
  */
 
 function LogMethodCalls(target: any, propertyName: string, propertyDescriptor: PropertyDescriptor): PropertyDescriptor {
-  // code here
+ 
+  const originalMethod = propertyDescriptor.value;
+
+  
+  propertyDescriptor.value = function (...args: any[]) {
+    console.log(`Calling "${propertyName}" with arguments: ${args.join(", ")}`);
+    return originalMethod.apply(this, args);
+  };
+
+  
+  return propertyDescriptor;
 }
 
 class Calculator {
-  // code here
+  @LogMethodCalls
+  add(a: number, b: number): number{
+ return a+b;
+  }
+   @LogMethodCalls
+  multiply(a: number, b: number): number{
+    return a*b;
+     }
 }
 
 // const calculator = new Calculator()
@@ -73,6 +96,23 @@ class Calculator {
 
 namespace UserProfile {
   // code here
+  export interface ProfileInterface {
+    id: string
+    name: string
+    email:string
+
+  }
+  export function createProfile(name: string, email: string):ProfileInterface{
+    return {
+      id: generateId(),
+      name,
+      email,
+    };
+  }
+  function generateId() : string{
+    return Math.random().toString(36);
+ }
+
 }
 
 // const profile = UserProfile.createProfile('John Doe', 'john@example.com')
